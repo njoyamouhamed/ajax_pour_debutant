@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Cours d'Ajax</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>LIRE LE FICHIER TEXT avec de L'AJAX</h1>
+        <button onclick="LIREFICHIER_EN_AJAX()">LIRE LE FICHIER TEXT</button>
+        <p id="ajax1">Le contenu va s'afficher ici</p>
+        <script>
+            function LIREFICHIER_EN_AJAX(){
+                //Appel AJAX
+                var ajax=new XMLHttpRequest();
+                
+                //reponse de la part du fichier  lu
+                ajax.onreadystatechange=function(){
+                    if(this.readyState==4 && this.status==200){
+                        document.getElementById("ajax1").innerHTML=this.responseText;
+                    }
+                }
+                //ENVOYEZ la requete au serveur . on utilise  OPEN et SEND
+                ajax.open("GET","fichier.txt",true);
+                ajax.send();
+            }
+            
+        </script>
+    </body>
+</html>

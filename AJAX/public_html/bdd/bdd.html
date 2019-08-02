@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>AJAX PHPH HTML</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+      
+    </head>
+    <body>
+        <div>
+            <button onclick="AFFICHE_ETUDIANTS()">AFFICHER LES ETUDIANTS</button>
+            <p id="bdd">Le resultat va s'afficher ici...</p>
+            
+            <script>
+                function AFFICHE_ETUDIANTS(){
+                        var ajax=new XMLHttpRequest();
+                        
+                        ajax.onreadystatechange=function (){
+                          if(this.readyState==4 && this.status==200) {
+                              document.getElementById("bdd").innerHTML=this.responseText;
+                          } 
+                        };
+                        
+                        ajax.open("GET","etudiants.php",true);
+                        ajax.send();
+                }
+            </script>
+        </div>
+    </body>
+</html>
